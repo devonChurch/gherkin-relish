@@ -5,6 +5,7 @@
   ],
   "scripts": {
     "commit": "cz",
+    "build": "wsrun --stages build",
     "start": "wsrun --stages start"
   },
   "config": {
