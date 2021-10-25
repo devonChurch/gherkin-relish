@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "declaration": true,
+        "declarationDir": "./dist",
+        "forceConsistentCasingInFileNames": true,
+        "module": "commonjs",
+        "sourceMap": true,
+        "target": "ESNext",
+        "strict": true
+    },
+    "include": ["src/**/*"]
+}
