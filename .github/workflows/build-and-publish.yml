@@ -1,0 +1,43 @@
+name: Build and Deploy Global Config
+env:
+  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+on:
+  push:
+    branches: [ main ]
+  
+jobs:
+  buildAndDeploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    # Extract the version from .nvmrc and save it as an "output parameter" for
+    # future use.
+    # This allows us to use a consistent Node.js version between local development
+    # and CI.
+    # @see https://github.com/actions/setup-node/issues/32#issuecomment-539794249
+    # @see https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-commands-for-github-actions#setting-an-output-parameter
+    - name: Read .nvmrc
+      run: echo "::set-output name=NVMRC::$(cat .nvmrc)"
+      id: nvm
+
+    # Use our saved .nvmrc "output parameter" to initialise our specific version
+    # of Node.js
+    - name: Setup Node
+      uses: actions/setup-node@v2
+      with:
+        node-version: '${{ steps.nvm.outputs.NVMRC }}'
+
+    - name: Install Node.js dependencies
+      run: yarn install
+
+    - name: Build Package(s)
+      run: yarn workspaces run build
+
+    - name: Publish Package(s)
+      run: yarn workspaces run semantic-release
+      
