@@ -1,0 +1,6 @@
+{
+  "name": "@devon-church/gherkin-relish-browser",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "license": "MIT"
+}
