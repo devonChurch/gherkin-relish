@@ -9,7 +9,8 @@
   },
   "scripts": {
     "commit": "cz",
-    "build": "webpack --mode=production"
+    "build": "webpack --mode=production",
+    "start": "webpack --mode=development --watch"
   },
   "devDependencies": {
     "commitizen": "^4.2.4",

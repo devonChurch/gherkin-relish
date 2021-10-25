@@ -1,4 +1,18 @@
 {
   "private": true,
-  "workspaces": ["packages/*"]
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "commit": "cz",
+    "start": "wsrun --stages start"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "devDependencies": {
+    "wsrun": "^5.2.4"
+  }
 }
