@@ -10,6 +10,7 @@
   "scripts": {
     "commit": "cz",
     "build": "webpack --mode=production",
+    "clean": "rm -rf ./dist",
     "start": "webpack --mode=development --watch"
   },
   "devDependencies": {

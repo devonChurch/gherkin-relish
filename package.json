@@ -6,7 +6,9 @@
   "scripts": {
     "commit": "cz",
     "build": "wsrun --stages build",
-    "start": "wsrun --stages start"
+    "clean": "wsrun clean",
+    "watch": "wsrun start",
+    "start": "yarn build && yarn watch"
   },
   "config": {
     "commitizen": {
